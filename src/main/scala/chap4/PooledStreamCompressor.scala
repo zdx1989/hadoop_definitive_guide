@@ -10,6 +10,8 @@ import org.apache.hadoop.util.ReflectionUtils
   */
 object PooledStreamCompressor {
 
+
+  /** Compressor 根本就没有起作用，从CodecPool中get，没做任何操作又return ？？？**/
   def main(args: Array[String]): Unit = {
     val codecClassName = args(0)
     val codecClass = Class.forName(codecClassName)
@@ -24,6 +26,5 @@ object PooledStreamCompressor {
     } finally {
       CodecPool.returnCompressor(compressor)
     }
-
   }
 }

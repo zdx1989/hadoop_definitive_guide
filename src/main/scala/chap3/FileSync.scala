@@ -15,7 +15,7 @@ object FileSync {
     val fs = FileSystem.get(conf)
     val p = new Path(uri)
     val out = fs.create(p)
-    assert(fs.exists(p) == true)
+    assert(fs.exists(p))
 
     out.write("content\n".getBytes("UTF-8"))
     out.flush()

@@ -11,7 +11,7 @@ import org.apache.avro.util.Utf8
 /**
   * Created by zhoudunxiong on 2018/11/11.
   */
-object StringPair {
+object StringPairTest {
 
   def main(args: Array[String]): Unit = {
     val parser = new Parser()

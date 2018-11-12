@@ -1,0 +1,10 @@
+{
+    "type": "record",
+    "name": "StringPairNew",
+    "doc": "A pair of string",
+    "fields": [
+        {"name": "left", "type": "string"},
+        {"name": "right", "type": "string"},
+        {"name": "description", "type": "string", "default": ""}
+    ]
+}

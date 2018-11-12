@@ -14,6 +14,7 @@ import org.apache.avro.util.Utf8
 object StringPairNewTest {
 
   /** 旧的schema写入数据，新的Schema读出新的数据，新增的字段通过默认值读取 **/
+  /** 新的模式减少了字段，读取旧的数据时，减少的字段可以忽略 **/
   def main(args: Array[String]): Unit = {
     val parser = new Parser()
     val schema = parser.parse(getClass.getResourceAsStream("/StringPair.avsc"))
@@ -35,5 +36,19 @@ object StringPairNewTest {
     assert(result.get("left").toString == "L")
     assert(result.get("right").toString == "R")
     assert(result.get("description").toString == "")
+
+    val rightSchema = parser.parse(getClass.getResourceAsStream("/StringPairRight.avsc"))
+    val newReader = new GenericDatumReader[GenericRecord](schema, rightSchema)
+    val newDecoder = DecoderFactory.get().binaryDecoder(out.toByteArray, null)
+    val newResult = newReader.read(null, newDecoder)
+    assert(newResult.get("right").toString == "R")
+    assert(newResult.get("left") == null)
+
+//    val aliasesSchema= parser.parse(getClass.getResourceAsStream("/StringPairAliases.avsc"))
+//    val aliasesReader = new GenericDatumReader[GenericRecord](null, aliasesSchema)
+//    val aliasesDecoder = DecoderFactory.get().binaryDecoder(out.toByteArray, null)
+//    val newResult1 = aliasesReader.read(null, aliasesDecoder)
+//    assert(newResult1.get("first").toString == "L")
+//    assert(newResult1.get("right").toString == "R")
   }
 }

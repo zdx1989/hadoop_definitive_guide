@@ -2,9 +2,9 @@ package chap2
 
 import org.apache.hadoop.fs.Path
 import org.apache.hadoop.io.{IntWritable, Text}
-import org.apache.hadoop.mapred.FileOutputFormat
 import org.apache.hadoop.mapreduce.Job
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat
 
 /**
   * Created by zhoudunxiong on 2018/11/13.
@@ -20,7 +20,7 @@ object MaxTemperature {
     job.setJarByClass(MaxTemperature.getClass)
     job.setJobName("Max temperature")
     FileInputFormat.addInputPath(job, new Path(args(0)))
-    FileOutputFormat.setOutputPath(null, new Path(args(1)))
+    FileOutputFormat.setOutputPath(job, new Path(args(1)))
     job.setMapperClass(classOf[MaxTemperatureMapper])
     job.setReducerClass(classOf[MaxTemperatureReducer])
     job.setOutputKeyClass(classOf[Text])

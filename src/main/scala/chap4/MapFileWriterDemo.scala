@@ -1,8 +1,8 @@
 package chap4
 
 import org.apache.hadoop.conf.Configuration
-import org.apache.hadoop.fs.{FileSystem, Path}
-import org.apache.hadoop.io.{IntWritable, MapFile, Text}
+import org.apache.hadoop.fs.FileSystem
+import org.apache.hadoop.io.{IOUtils, IntWritable, MapFile, Text}
 
 /**
   * Created by zhoudunxiong on 2018/11/13.
@@ -30,7 +30,7 @@ object MapFileWriterDemo {
         writer.append(key, value)
       }
     } finally {
-      writer.close()
+      IOUtils.closeStream(writer)
     }
   }
 }

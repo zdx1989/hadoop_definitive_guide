@@ -10,7 +10,9 @@ import org.apache.hadoop.mapreduce.Reducer
   */
 class MaxTemperatureReducer extends Reducer[Text, IntWritable, Text, IntWritable] {
 
-  def reduce(key: Text, values: Iterable[IntWritable], context: Context): Unit = {
+  type RContext = Reducer[Text, IntWritable, Text, IntWritable] # Context
+
+  override def reduce(key: Text, values: Iterable[IntWritable], context: RContext): Unit = {
     val valuesIterator = values.iterator()
     var maxValue = Integer.MIN_VALUE
     while (valuesIterator.hasNext) {

@@ -8,9 +8,11 @@ import org.apache.hadoop.mapreduce.Mapper
   */
 class MaxTemperatureMapper extends Mapper[LongWritable, Text, Text, IntWritable] {
 
+  type WContext = Mapper[LongWritable, Text, Text, IntWritable] # Context
+
   private val MISSING: Int = 9999
 
-  def map(key: LongWritable, value: Text, context: Context): Unit = {
+  override def map(key: LongWritable, value: Text, context: WContext): Unit = {
     val line = value.toString
     val year = line.substring(15, 19)
     val airTemperature =

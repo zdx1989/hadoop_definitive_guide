@@ -16,19 +16,19 @@
 
 <!-- Put site-specific property overrides in this file. -->
 
-<configuration>  
-    <property>  
-        <name>fs.defaultFS</name>  
-        <value>hdfs://localhost:9000</value>  
-    </property>  
-    <property>  
-        <name>hadoop.tmp.dir</name>  
-        <value>/Users/zhoudunxiong/Software/hadoop-2.7.6/temp</value>  
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost:9000</value>
+    </property>
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/Users/zhoudunxiong/Software/hadoop-2.7.6/temp</value>
     </property>
     <property>
         <name>fs.trash.interval</name>
         <value>120</value>
-    </property> 
+    </property>
     <property>
      <name>hadoop.proxyuser.zhoudunxiong.hosts</name>
      <value>*</value>
@@ -36,5 +36,5 @@
     <property>
        <name>hadoop.proxyuser.zhoudunxiong.groups</name>
        <value>*</value>
-    </property> 
+    </property>
 </configuration>

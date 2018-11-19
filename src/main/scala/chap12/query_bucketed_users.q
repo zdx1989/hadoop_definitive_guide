@@ -1,0 +1,1 @@
+select * from bucketed_users tablesample(bucket 1 out of 4 on id)

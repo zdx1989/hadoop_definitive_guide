@@ -1,4 +1,6 @@
-create table managed_table (dummy string)
+drop table if exists managed_table;
+
+create table if not exists managed_table (dummy string)
 row format delimited
 fields terminated by '\t';
 

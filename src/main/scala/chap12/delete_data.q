@@ -1,0 +1,1 @@
+dfs -rm -r /user/hive/warehouse/target_new

@@ -46,3 +46,11 @@ on sales.id = things.id;
 select sales.*, things.*
 from sales full outer join things
 on sales.id = things.id;
+
+select things.*
+from things
+where things.id in (select id from sales);
+
+select *
+from things left semi join sales
+on things.id = sales.id;

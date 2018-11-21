@@ -54,3 +54,7 @@ where things.id in (select id from sales);
 select *
 from things left semi join sales
 on things.id = sales.id;
+
+select /* + MAPJOIN(things) */ sales.*, things.*
+from sales join things
+on sales.id = things.id;

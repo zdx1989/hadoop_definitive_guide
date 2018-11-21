@@ -34,3 +34,15 @@ explain
 select sales.*, things.*
 from sales join things
 on sales.id = things.id;
+
+select sales.*, things.*
+from sales left outer join things
+on sales.id = things.id;
+
+select sales.*, things.*
+from sales right outer join things
+on sales.id = things.id;
+
+select sales.*, things.*
+from sales full outer join things
+on sales.id = things.id;

@@ -11,7 +11,7 @@ import org.apache.zookeeper.{CreateMode, WatchedEvent, Watcher, ZooKeeper}
   */
 class CreateGroup extends Watcher {
 
-  private val SEESSION_TIMEOUT = 5000
+  private val SESSION_TIMEOUT = 5000
 
   private val connectSignal = new CountDownLatch(1)
 
@@ -19,7 +19,7 @@ class CreateGroup extends Watcher {
 
 
   def connect(hosts: String): Unit = {
-    zk = new ZooKeeper(hosts, SEESSION_TIMEOUT, this)
+    zk = new ZooKeeper(hosts, SESSION_TIMEOUT, this)
     connectSignal.await()
   }
 

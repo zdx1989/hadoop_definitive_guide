@@ -13,5 +13,5 @@ class ConfigUpdater {
 
   private val random: Random = new Random()
 
-  def ConfigUpdate(host: String): Unit = ???
+  //def ConfigUpdate(host: String): Unit = ???
 }

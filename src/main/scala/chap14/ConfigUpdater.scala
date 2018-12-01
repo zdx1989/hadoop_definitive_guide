@@ -6,16 +6,15 @@ import java.util.concurrent.TimeUnit
 /**
   * Created by zhoudunxiong on 2018/11/28.
   */
-class ConfigUpdater {
+class ConfigUpdater(store: ActiveKeyValueStore) {
 
   private val PATH: String = "/config"
 
-  private var store: ActiveKeyValueStore = _
-
   private val random: Random = new Random()
 
-  def ConfigUpdate(host: String): Unit = {
-    store = new ActiveKeyValueStore()
+
+  def this(host: String) = {
+    this(new ActiveKeyValueStore)
     store.connect(host)
   }
 
@@ -32,7 +31,7 @@ class ConfigUpdater {
 object ConfigUpdater {
 
   def main(args: Array[String]): Unit = {
-    val configUpdater = new ConfigUpdater()
+    val configUpdater = new ConfigUpdater(args(0))
     configUpdater.run()
 
   }

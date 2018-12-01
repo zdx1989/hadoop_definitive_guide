@@ -2,7 +2,7 @@ package chap14
 
 import java.nio.charset.Charset
 
-import org.apache.zookeeper.CreateMode
+import org.apache.zookeeper.{CreateMode, Watcher}
 import org.apache.zookeeper.ZooDefs.Ids
 
 /**
@@ -18,5 +18,10 @@ class ActiveKeyValueStore extends ConnectionWatcher {
       Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT)
     else
       zk.setData(path, value.getBytes(CHARSET), -1)
+  }
+
+  def read(path: String, watcher: Watcher): String = {
+    val data = zk.getData(path, watcher, null)
+    new String(data, CHARSET)
   }
 }

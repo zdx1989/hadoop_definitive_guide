@@ -7,8 +7,7 @@ import java.util.concurrent.TimeUnit
   * Created by zhoudunxiong on 2018/11/28.
   */
 class ConfigUpdater(store: ActiveKeyValueStore) {
-
-  private val PATH: String = "/config"
+  import ConfigUpdater._
 
   private val random: Random = new Random()
 
@@ -29,6 +28,8 @@ class ConfigUpdater(store: ActiveKeyValueStore) {
 }
 
 object ConfigUpdater {
+
+  val PATH: String = "/config"
 
   def main(args: Array[String]): Unit = {
     val configUpdater = new ConfigUpdater(args(0))

@@ -1,6 +1,6 @@
 create database hadoopguide;
-grant all privileges on hadoopguide.* to '%'@'localhost';
-grant all privileges on hadoopguide.* to ''@'localhost';
+grant all privileges on hadoopguide.* to '%'@'localhost' identified by 'zdx1989';
+grant all privileges on hadoopguide.* to ''@'localhost' identified by 'zdx1989';
 
 create table widgets(
     id int not null primary key auto_increment,

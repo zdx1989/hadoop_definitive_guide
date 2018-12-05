@@ -3,6 +3,8 @@ package chap14
 import java.util.Random
 import java.util.concurrent.TimeUnit
 
+import org.apache.zookeeper.KeeperException
+
 /**
   * Created by zhoudunxiong on 2018/11/28.
   */
@@ -32,8 +34,17 @@ object ConfigUpdater {
   val PATH: String = "/config"
 
   def main(args: Array[String]): Unit = {
-    val configUpdater = new ConfigUpdater(args(0))
-    configUpdater.run()
+    try {
+      val configUpdater = new ConfigUpdater(args(0))
+      configUpdater.run()
+    } catch {
+      case _: KeeperException.SessionExpiredException =>
+        // start a new session
+      case e: KeeperException =>
+        // already retried, so exit
+      e.printStackTrace()
+    }
+
 
   }
 }

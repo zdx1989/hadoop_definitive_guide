@@ -10,5 +10,5 @@ create table if not exists sales (
 row format delimited
     fields terminated by ',';
 
-load data local inpath '/Users/zhoudunxiong/Code/Hadoop_Definitive_Guide/src/main/scala/chap15/sales.q'
+load data local inpath '/Users/zhoudunxiong/Code/Hadoop_Definitive_Guide/src/main/scala/chap15/sales.log'
 into table sales;
